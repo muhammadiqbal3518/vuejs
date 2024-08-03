@@ -47,6 +47,7 @@ export default {
     data() {
         return {
             email: "",
+            userName: "",
             password: "",
             Process: false,
             mailMsg: '',

@@ -59,7 +59,17 @@
                             <span style="font-weight:bold;">Rp {{ formatCurrency(total) }}</span>
                         </div>
                         <div class="mt-3">
-                            <button @click="submitOrder()" :disabled=processing type="submit" class="btn btn-success form-control">{{  processing ? 'Sending Order ...' : 'Submit' }}</button>
+                            <button @click="submitOrder()" :disabled=processing type="submit" class="btn btn-success form-control">
+                                <span v-if="processing == true">
+                                    Sending...
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/odavpkmb.json"
+                                        trigger="loop"
+                                        style="width:25px;height:25px">
+                                    </lord-icon>
+                                </span>
+                                <span v-if="processing == false">Submit</span>
+                            </button>
                         </div>
                     </div>
                 </div>

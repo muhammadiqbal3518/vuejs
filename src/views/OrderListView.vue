@@ -3,7 +3,13 @@
     <div class="mdc-layout-grid">
         <div class="row mb-3">
             <div class="col-12">
-                <input type="text" v-model="keyword" :onchange="searchOrder()" class="form-control" placeholder="Masukkan No Table" inputmode="numeric" @input="filterNumeric">
+                <!-- <input type="text" v-model="keyword" :onchange="searchOrder()" class="form-control" placeholder="Masukkan No Table" inputmode="numeric" @input="filterNumeric"> -->
+
+                <select class="form-control" v-model="keyword" :onchange="searchOrder()">
+                    <option class="text-center" value="ordered">Ordered</option>
+                    <option class="text-center" value="done">Done</option>
+                    <option class="text-center" value="paid">Paid</option>
+                </select>
             </div>
         </div>
         <div class="mdc-layout-grid__inner">
@@ -52,12 +58,31 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="loadingModal" tabindex="-1"aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color:rgba(255, 255, 255, 0); border:none;">
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+                <div class="text-center">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/okdadkfx.json"
+                        trigger="loop"
+                        style="width:250px;height:250px">
+                    </lord-icon>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </template>
 <script>
 import axios from 'axios'
 import router from '@/router'
 import SideBar from '@/components/SideBar.vue'
-import Swal from 'sweetalert2'
 export default {
     components: {
         SideBar
@@ -69,8 +94,6 @@ export default {
             orders: [],
             filteredOrders: [],
             keyword: '',
-            socket: null,
-            pollingInterval: null,
         }
     },
     mounted(){
@@ -82,13 +105,13 @@ export default {
             this.stopPolling()
         }
         this.getOrders()
-        this.startPolling();
     },
     beforeDestroy() {
         this.stopPolling(); // Hentikan polling saat komponen dihapus
     },
     methods: {
         getOrders() {
+            $("#loadingModal").modal("show");
             axios.get('https://sub.mykavling.store/api/order', {
                 headers: {
                     'Authorization' : `Bearer ${localStorage.getItem('token')}`
@@ -108,18 +131,12 @@ export default {
                 }
                 console.log(error);
                 console.log('Error Fetch Items')
-            })
-        },
-        startPolling() {
-            this.pollingInterval = setInterval(() => {
-                this.getOrders(); // Panggil getOrders setiap interval
-            }, 1000); // Ambil data setiap 5 detik
-        },
-        stopPolling() {
-            clearInterval(this.pollingInterval); // Hentikan polling
+            }).finally(() => {
+            $("#loadingModal").modal("hide");
+            });
         },
         searchOrder() {
-            this.filteredOrders = this.orders.filter(order => order.table_no.toLowerCase().includes(this.keyword.toLowerCase()))
+            this.filteredOrders = this.orders.filter(order => order.status.toLowerCase().includes(this.keyword.toLowerCase()))
         },
         filterNumeric(event) {
             const input = event.target;

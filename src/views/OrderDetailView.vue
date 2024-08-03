@@ -86,6 +86,26 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="loadingModal" tabindex="-1"aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color:rgba(255, 255, 255, 0); border:none;">
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+                <div class="text-center">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/okdadkfx.json"
+                        trigger="loop"
+                        style="width:250px;height:250px">
+                    </lord-icon>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </template>
 <script>
 import axios from 'axios'
@@ -118,6 +138,7 @@ export default {
     },
     methods: {
         getOrder() {
+            $("#loadingModal").modal("show");
             axios.get('https://sub.mykavling.store/api/order/'+this.OrderID, {
                 headers: {
                     'Authorization' : `Bearer ${localStorage.getItem('token')}`
@@ -137,7 +158,9 @@ export default {
                 }
                 console.log(error);
                 console.log('Error Fetch Items')
-            })
+            }).finally(() => {
+            $("#loadingModal").modal("hide");
+            });
         },
         formatCurrency(value) {
             if (!value) return '';

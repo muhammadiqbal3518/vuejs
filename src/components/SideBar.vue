@@ -1,43 +1,118 @@
 <template lang="">
     <nav class="navbar fixed-bottom navbar-light">
         <div class="container justify-content-around">
-            <RouterLink v-if="$route.name == 'home'" class="nav-link active" to="/">
-                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i>
+            <RouterLink v-if="$route.name == 'home'" class="nav-link"
+            data-bs-toggle="tooltip" data-bs-placement="top"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Home Page"
+            style="background-color:rgba(98, 234, 255, 0.431); border-radius:15%;" to="/">
+                <lord-icon
+                    src="https://cdn.lordicon.com/laqlvddb.json"
+                    trigger="hover"
+                    style="width:25px;height:25px">
+                </lord-icon>
             </RouterLink>
-            <RouterLink v-if="$route.name != 'home'" class="nav-link" to="/">
-                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i>
+            <RouterLink v-if="$route.name != 'home'" class="nav-link" to="/"
+            data-bs-toggle="tooltip" data-bs-placement="top"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="Home Page">
+                <lord-icon
+                    src="https://cdn.lordicon.com/laqlvddb.json"
+                    trigger="hover"
+                    style="width:25px;height:25px">
+                </lord-icon>
             </RouterLink>
             <div v-if="role == 4">
-                <RouterLink v-if="$route.name == 'product'" class="nav-link active" to="/product">
-                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">credit_card</i>
+                <RouterLink v-if="$route.name == 'product'" class="nav-link"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Product Page"
+                style="background-color:rgba(98, 234, 255, 0.431); border-radius:15%;" to="/product">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/uecgmesg.json"
+                        trigger="hover"
+                        style="width:25px;height:25px">
+                    </lord-icon>
                 </RouterLink>
-                <RouterLink v-if="$route.name != 'product'" class="nav-link" to="/product">
-                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">credit_card</i>
+                <RouterLink v-if="$route.name != 'product'" class="nav-link" to="/product"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Home Page">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/uecgmesg.json"
+                        trigger="hover"
+                        style="width:25px;height:25px">
+                    </lord-icon>
                 </RouterLink>
             </div>
             <div>
-                <RouterLink v-if="$route.name == 'orderlist'" class="nav-link active" to="/order-list">
-                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">favorite</i>
+                <RouterLink v-if="$route.name == 'orderlist'" class="nav-link" 
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Order List Page"
+                style="background-color:rgba(98, 234, 255, 0.431); border-radius:15%;" to="/order-list">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/odavpkmb.json"
+                        trigger="hover"
+                        style="width:25px;height:25px">
+                    </lord-icon>
                 </RouterLink>
-                <RouterLink v-if="$route.name != 'orderlist'" class="nav-link" to="/order-list">
-                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">favorite</i>
+                <RouterLink v-if="$route.name != 'orderlist'" class="nav-link" to="/order-list"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Order List Page">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/odavpkmb.json"
+                        trigger="hover"
+                        style="width:25px;height:25px">
+                    </lord-icon>
                 </RouterLink>
             </div>
             <div v-if="role == 1 || role == 4">
-                <RouterLink v-if="$route.name == 'order'" class="nav-link active" to="/order">
-                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">shopping_cart</i>
+                <RouterLink v-if="$route.name == 'order'" class="nav-link" 
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Order Page"
+                style="background-color:rgba(98, 234, 255, 0.431); border-radius:15%;" to="/order">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/wzwygmng.json"
+                        trigger="hover"
+                        style="width:25px;height:25px">
+                    </lord-icon>
                 </RouterLink>
-                <RouterLink v-if="$route.name != 'order'" class="nav-link" to="/order">
-                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">shopping_cart</i>
+                <RouterLink v-if="$route.name != 'order'" class="nav-link" to="/order"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Order Page">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/wzwygmng.json"
+                        trigger="hover"
+                        style="width:25px;height:25px">
+                    </lord-icon>
                 </RouterLink>
             </div>
             <div v-if="role == 4">
-                <RouterLink v-if="$route.name == 'orderReport'" class="nav-link active" to="/order-report">
-                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">account_circle</i>
-                </RouterLink>
-                <RouterLink v-if="$route.name != 'orderReport'" class="nav-link" to="/order-report">
-                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">account_circle</i>
-                </RouterLink>
+                <a v-if="$route.name == 'orderReport'" class="nav-link"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Report Page"
+                style="background-color:rgba(98, 234, 255, 0.431); border-radius:15%;" href="/order-report">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/abwrkdvl.json"
+                        trigger="hover"
+                        style="width:25px;height:25px">
+                    </lord-icon>
+                </a>
+                <a v-if="$route.name != 'orderReport'" class="nav-link" href="/order-report"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Report Page">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/abwrkdvl.json"
+                        trigger="hover"
+                        style="width:25px;height:25px">
+                    </lord-icon>
+                </a>
             </div>
         </div>
     </nav>
