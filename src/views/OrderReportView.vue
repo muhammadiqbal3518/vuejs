@@ -37,12 +37,20 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 mt-2">
-                <h6 class="card-title">Order/date chart</h6>
-                <canvas id="orderChart" width="400" height="150"></canvas>
+                <div class="card">
+                    <div class="card-body" style="width:100%; height:310px;">
+                        <h6 class="card-title">Order/date chart</h6>
+                        <canvas id="orderChart" width="400" height="150"></canvas>
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-md-6 mt-2">
-                <h6 class="card-title">Order/datetime chart</h6>
-                <canvas id="newChart" width="400" height="150"></canvas>
+                <div class="card">
+                    <div class="card-body" style="width:100%; height:310px;">
+                        <h6 class="card-title">Order/datetime chart</h6>
+                        <canvas id="newChart" width="400" height="150"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="mdc-layout-grid__inner">
