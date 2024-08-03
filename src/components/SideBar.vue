@@ -92,18 +92,18 @@
                 </RouterLink>
             </div>
             <div v-if="role == 4">
-                <a v-if="$route.name == 'orderReport'" class="nav-link"
+                <RouterLink v-if="$route.name == 'orderReport'" class="nav-link"
                 data-bs-toggle="tooltip" data-bs-placement="top"
                 data-bs-custom-class="custom-tooltip"
                 data-bs-title="Report Page"
-                style="background-color:rgba(98, 234, 255, 0.431); border-radius:15%;" href="/order-report">
+                style="background-color:rgba(98, 234, 255, 0.431); border-radius:15%;" to="/order-report">
                     <lord-icon
                         src="https://cdn.lordicon.com/abwrkdvl.json"
                         trigger="hover"
                         style="width:25px;height:25px">
                     </lord-icon>
-                </a>
-                <a v-if="$route.name != 'orderReport'" class="nav-link" href="/order-report"
+                </RouterLink>
+                <RouterLink v-if="$route.name != 'orderReport'" class="nav-link" to="/order-report"
                 data-bs-toggle="tooltip" data-bs-placement="top"
                 data-bs-custom-class="custom-tooltip"
                 data-bs-title="Report Page">
@@ -112,7 +112,7 @@
                         trigger="hover"
                         style="width:25px;height:25px">
                     </lord-icon>
-                </a>
+                </RouterLink>
             </div>
         </div>
     </nav>
